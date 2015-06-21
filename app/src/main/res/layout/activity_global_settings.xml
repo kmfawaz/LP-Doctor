@@ -1,0 +1,289 @@
+<!--
+  ~ LP-Doctor Copyright 2015 Regents of the University of Michigan
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See LICENSE for the specific language governing permissions and limitations under the License
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="edu.umich.eecs.LPPM.UI.SecondarySettingsActivity"
+    tools:ignore="MergeRootFrame">
+
+    <Switch
+        android:id="@+id/main_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/main_switch" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_switch">
+
+        <RelativeLayout
+            android:id="@+id/rule_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/foreground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_toLeftOf="@+id/background"
+                android:columnCount="1">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_column="0"
+                    android:layout_gravity="left|top"
+                    android:layout_row="1"
+                    android:text="@string/fore_title" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView1"
+                    android:layout_column="0"
+                    android:layout_gravity="left|top"
+                    android:layout_row="2">
+
+                    <RadioButton
+                        android:id="@+id/noaction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView1"
+                        android:checked="true"
+                        android:text="No action" />
+
+                    <RadioButton
+                        android:id="@+id/highdiffprivacy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/noaction"
+                        android:layout_gravity="left|top"
+                        android:text="Tracking &amp; Profiling" />
+
+                    <RadioButton
+                        android:id="@+id/citylevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/highdiffprivacy"
+                        android:text="City Level" />
+
+                    <RadioButton
+                        android:id="@+id/block"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/lowdiffprivacy"
+                        android:text="Block" />
+
+                    <RadioButton
+                        android:id="@+id/fixed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/block"
+                        android:text="Fixed Location" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/radioGroup1"
+                    android:layout_marginTop="16dp"
+                    android:text="Profiling Protection: " />
+
+                <SeekBar
+                    android:id="@+id/proflevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView3"
+                    android:max="3" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/proflevel"
+                    android:layout_marginTop="16dp"
+                    android:text="Tracking Protection: " />
+
+                <SeekBar
+                    android:id="@+id/tracklevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView4"
+                    android:max="3" />
+
+                <EditText
+                    android:id="@+id/lat_global"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tracklevel"
+                    android:ems="10"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:text="41.1"></EditText>
+
+                <EditText
+                    android:id="@+id/lon_global"
+                    android:layout_width="108dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lat_global"
+                    android:ems="10"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:text="-81.6" />
+
+                <TextView
+                    android:id="@+id/trackLevelDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/textView4"
+                    android:layout_toRightOf="@+id/textView1" />
+
+                <TextView
+                    android:id="@+id/profileLevelDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/textView3"
+                    android:layout_alignBottom="@+id/textView3"
+                    android:layout_toRightOf="@+id/textView3" />
+
+            </RelativeLayout>
+
+            <GridLayout
+                android:id="@+id/background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:columnCount="1">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_column="0"
+                    android:layout_gravity="left|top"
+                    android:layout_row="1"
+                    android:text="@string/back_title" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_gravity="left|top"
+                    android:layout_row="2">
+
+                    <RadioButton
+                        android:id="@+id/noaction_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="No action" />
+
+                    <RadioButton
+                        android:id="@+id/citylevel_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="City Level" />
+
+                    <RadioButton
+                        android:id="@+id/block_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="57dp"
+                        android:text="Block" />
+
+                    <RadioButton
+                        android:id="@+id/synroute_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Synthetic Route" />
+                </RadioGroup>
+            </GridLayout>
+
+            <Button
+                android:id="@+id/get_from_map"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/foreground"
+                android:text="Map it" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <!--
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lat_global"
+        android:layout_alignBottom="@+id/lat_global"
+        android:layout_alignRight="@+id/apply"
+        android:text="latitude" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lon_global"
+        android:layout_alignBottom="@+id/lon_global"
+        android:layout_alignLeft="@+id/textView4"
+        android:text="longitude" />
+           -->
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Reset Changes" />
+
+    <Button
+        android:id="@+id/apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="Apply" />
+
+    <Button
+        android:id="@+id/removeRule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/reset"
+        android:text="Remove" />
+
+    <TextView
+        android:id="@+id/placeIDView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/main_switch"
+        android:layout_alignBottom="@+id/main_switch"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>

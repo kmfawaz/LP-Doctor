@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ LP-Doctor Copyright 2015 Regents of the University of Michigan
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See LICENSE for the specific language governing permissions and limitations under the License
+  -->
+
+<resources>
+
+    <string name="app_name">LocationPrivacy</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_location">LocationActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_my_location">MyLocationActivity</string>
+    <string name="stop">Stop</string>
+    <string name="title_activity_app_list">AppListActivity</string>
+    <string name="title_activity_secondary_settings">SecondarySettingsActivity</string>
+    <string name="main_switch">Privacy Controls</string>
+    <string name="fore_title">Foreground Controls</string>
+    <string name="back_title">Background Controls</string>
+    <string name="title_activity_global_settings">GlobalSettingsActivity</string>
+    <string name="message2">or long press a location on the map to add location specific policy</string>
+    <string name="message1">"Please choose one of your prior visited locations "</string>
+    <string name="title_activity_app_installed">New App Detected</string>
+
+</resources>
