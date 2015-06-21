@@ -62,7 +62,6 @@ public class LocationAnonymizer {
             String action = intent.getStringExtra("action");
             String app = intent.getStringExtra("appName");
             int place = intent.getIntExtra("placeID", -1);
-            //I guess app and place are here?
 
             if (action == null) {
                 return;// do nothing
@@ -100,17 +99,6 @@ public class LocationAnonymizer {
     };
 
 
-    //got to organize code structure, who calls whom?
-
-    //what do we need to make the decision?
-    // app name -- done
-    // current place -- done
-    // app expected to access location? -- done
-    // app histogram -- done
-    // app mobility model -- done
-    // we need the rules -- later not now
-
-    //seems we are ready to go, also get rules from here??
 
 
     public LocationAnonymizer(Context context, MonitoringService mainService) {
@@ -160,7 +148,6 @@ public class LocationAnonymizer {
         Util.Log("lp_time", "rule fetch: " + (System.nanoTime() - t1));
         if (rule == null) {
             //////System.out.println("No Rule");
-            // we need good management here
             diagHelper.globalFirstAlert(app, place, source);
             //rule option do nothing then do nothing
         } else if (rule.foreRule == RuleData.NO_ACTION) { //only when the app has it as the global rule highest place
@@ -276,13 +263,6 @@ public class LocationAnonymizer {
         }
     }
 
-    /*
-    //these are the annoying prompts that we are getting rid of.
-    private void issuePrompt (String appLPPM, String result,String source,int reportedPlaceID) {
-        diagHelper.displayAlert(appLPPM, source);
-        //finishDecisionMaking (appLPPM, result,source,reportedPlaceID); //this shouldn't be here later
-    }
-    */
 
     private void DisplayPrivacyNotification(String appLPPM, String action, String source, int reportedPlaceID) {
 
