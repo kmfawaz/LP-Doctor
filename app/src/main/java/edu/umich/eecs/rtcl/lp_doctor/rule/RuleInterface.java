@@ -32,14 +32,6 @@ public class RuleInterface {
         //this.mDbHelper = mDbHelper;
     }
 
-    //we need a function to extract the anon level for an app
-    /*
-    String strWhereFirstClause = "(" +
-            RuleEntry.COLUMN_NAME_PLACE_ID + "=" + place + " OR " +
-            RuleEntry.COLUMN_NAME_PLACE_ID + "=-1" + " OR " +
-            RuleEntry.COLUMN_NAME_PLACE_ID + "=" + RuleInterface.PLACE_FLAG +
-            ")";
-    */
 
     //add rule
     //modify rule

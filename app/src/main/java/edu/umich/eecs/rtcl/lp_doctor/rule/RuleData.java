@@ -15,18 +15,6 @@ import java.util.LinkedList;
 
 import edu.umich.eecs.rtcl.lp_doctor.placeIdentification.LocationContract.RuleEntry;
 
-/*public static abstract class RuleEntry implements BaseColumns {
-        public static final String TABLE_NAME = "rules";
-        public static final String COLUMN_NAME_PACKNAME = "app";
-        public static final String COLUMN_NAME_PLACE_ID = "placeid";
-        public static final String COLUMN_NAME_FORE_RULE = "forerule";
-        public static final String COLUMN_NAME_BACK_RULE = "backrule";
-        public static final String COLUMN_NAME_PERS_RULE = "persrule";
-        public static final String COLUMN_NAME_FORE_LEVEL = "forelevel";
-        public static final String COLUMN_NAME_LAT = "latitude"; //if forcing a specific translation
-        public static final String COLUMN_NAME_LON = "longitude"; //if forcing a specific translation
-    }
-    */
 
 public class RuleData {
     static public final int NO_ACTION = 0; // do nothing
