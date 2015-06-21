@@ -24,10 +24,7 @@ import edu.umich.eecs.rtcl.lp_doctor.Util;
 
 public class AppPane extends RelativeLayout {
 
-    //    private static final int ICON_ID = 1;
-//    private static final int APPNAME_ID = 2;
-//    private static final int PACKNAME_ID = 3;
-//    private static final int SEPARATOR_ID = 4;
+
     String app;
     ImageView icon;
     Context context;

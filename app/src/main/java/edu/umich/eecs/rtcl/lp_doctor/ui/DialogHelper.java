@@ -32,34 +32,7 @@ public class DialogHelper {
     }
 
 
-    //displayed as part of the ongoing privacy protection
-    //which is to be used no more! (annoying)
-/*
-    public void displayAlert(final String appLPPM, final String source) {
 
-        AlertDialog dialog = new AlertDialog.Builder(context).setTitle("LP-Doctor")
-                .setMessage("Allow location access? for:\t"+appLPPM)
-                .setNegativeButton("Protect me!", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        locAnon.anonymizeLocation(appLPPM, "Yes -- new dialog", source, 0);
-                    }
-                }).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        locAnon.finishDecisionMaking(appLPPM, "Yes -- new dialog", source, 0);
-                    }
-                }).setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        locAnon.finishDecisionMaking(appLPPM, "cancelled -- new dialog", source, 0);
-                    }
-                }).setIcon(R.drawable.ic_launcher).create();
-
-        dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-
-        dialog.show();
-
-    }
-*/
     //also has to do the rules for first time the app launches ever
     //all decision leaves implemented
     public void globalFirstAlert(final String appLPPM, final int place, final String source) {
@@ -161,7 +134,7 @@ public class DialogHelper {
         //locAnon.ruleBridge.updateForeRule(app, place, rule);
         locAnon.ruleBridge.updateForeRule(RuleInterface.APP_FLAG, place, rule);
         // app is RuleInterface.APP_FLAG
-        locAnon.anonymizeLocation(app, "Yes -- new dialog", source, 0, RuleData.ANON_MEDIUM); //I don't like where is this going
+        locAnon.anonymizeLocation(app, "Yes -- new dialog", source, 0, RuleData.ANON_MEDIUM);
     }
 
     //insert the per place rule

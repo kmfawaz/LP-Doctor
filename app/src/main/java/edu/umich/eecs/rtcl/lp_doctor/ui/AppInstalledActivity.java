@@ -270,7 +270,6 @@ public class AppInstalledActivity extends ActionBarActivity {
             case 2:
                 return RuleData.ANON_HIGH;
         }
-        //shouldn't get here, but who knows?
         return RuleData.ANON_LOW;
     }
 }

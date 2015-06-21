@@ -55,10 +55,7 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
             //Log.v("LP-Doctor", hasLocationService() + "");
             //send the intent to the service side
             Log.v(Util.TAG, "pressed the test button");
-            // Intent intent=new Intent(MonitoringService.INTENT_FILTER);
-            // intent.putExtra("action","LPPM");
-            // intent.putExtra("app","edu.umich.eecs.rtcl");
-            // sendBroadcast(intent);
+
             startLocActivity();
         }
     };
@@ -69,30 +66,7 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
 
             //flush all rules from the rules DB
             App.getWritableDB().execSQL("DELETE FROM " + LocationContract.RuleEntry.TABLE_NAME);
-            /*
-            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            //Remember to remove your your provider before using it or after.
-            //In other case it won't be remove till restarting the phone.
-            if (locationManager.getProvider(providerName) != null) {
-                try {
-                    locationManager.removeTestProvider(providerName);
-                } catch (Exception e) {
-                    ;
-                }
-            }
-            locationManager.addTestProvider(providerName, true, false, false, false, true, true, true,
-                    Criteria.POWER_LOW, Criteria.ACCURACY_FINE);
-            Location loc = new Location(LocationManager.NETWORK_PROVIDER);
-            loc.setLongitude(13);
-            loc.setTime(System.currentTimeMillis());
-            loc.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
-            loc.setLatitude(10);
-            loc.setAccuracy(250);
-            locationManager.setTestProviderEnabled(providerName, true);
-            locationManager.setTestProviderStatus(providerName, LocationProvider.AVAILABLE,null,System.currentTimeMillis());
-            locationManager.setTestProviderLocation(providerName, loc);
-            //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, myLocationListener);
-            */
+
         }
     };
     android.location.LocationListener myLocationListener = new android.location.LocationListener() {
@@ -126,21 +100,8 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
             i++;
             latitude.setText("latitude: " + i);
             longitude.setText("longitude: " + i);
-            //startService(new Intent(MainActivity.this, MyService.class));
             startService(new Intent(MainActivity.this, MonitoringService.class));
-           /* LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-            Criteria localCriteria = new Criteria();
-            localCriteria.setAccuracy(2);
-            try
-            {
-                Location localLocation = locationManager.getLastKnownLocation(locationManager.getBestProvider(localCriteria, true));
-                //latitude.setText(localLocation.getLatitude()+"");
-                //longitude.setText(localLocation.getLongitude()+"");
-            }
-            catch (IllegalArgumentException e) {
-                latitude.setText("error");
-                longitude.setText(e.getMessage());
-            }*/
+
 
         }
     };
@@ -159,10 +120,10 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
             // Extract data included in the Intent
             String action = locationIntent.getStringExtra("action");
 
-            // if (action.equals("dataBack")) {
+
             String data = locationIntent.getStringExtra("data");
             Log.v(Util.TAG, "finished execution with this decision:\t" + data);
-            // }
+
         }
     };
 
@@ -200,7 +161,6 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
 
     @Override
     protected void onStop() {
-        //mGoogleApiClient.disconnect();
         super.onStop();
     }
 

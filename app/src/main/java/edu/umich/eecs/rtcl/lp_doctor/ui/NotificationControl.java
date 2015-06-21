@@ -124,25 +124,7 @@ public class NotificationControl {
         }
 
 
-        //and we need the below because ???? -- don't think it's needed
-        // Creates an explicit intent for an Activity in your app
-        /*
-        Intent resultIntent = new Intent(this, GlobalSettingsActivity.class);
-        resultIntent.putExtra("appName", packName);
-        resultIntent.putExtra("placeID", place); //global rule
 
-
-
-        // The stack builder object will contain an artificial back stack for the started Activity.
-        // This ensures that navigating backward from the Activity leads out of your application to the Home screen.
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        // Adds the back stack for the Intent (but not the Intent itself)
-        stackBuilder.addParentStack(MyMainActivity.class);
-        // Adds the Intent that starts the Activity to the top of the stack
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(resultPendingIntent);
-    */
         return mBuilder.build();
     }
 
