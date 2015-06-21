@@ -118,7 +118,6 @@ public class LocationAccessDetector {
     }
 
     //get portion of location accesses
-    //first time app runs this will crash :)
     public static double getLocationAccessRate(Context context, String app) {
 
         int sessionTotal = getSessionTotal(context, app);
