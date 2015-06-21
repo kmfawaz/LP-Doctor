@@ -12,15 +12,9 @@ package edu.umich.eecs.rtcl.lp_doctor.placeIdentification;
  * Created by kmfawaz on 1/16/2015.
  */
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import edu.umich.eecs.rtcl.lp_doctor.placeIdentification.LocationContract.AppHistogram;
 import edu.umich.eecs.rtcl.lp_doctor.placeIdentification.LocationContract.CityEntry;
@@ -117,12 +111,6 @@ public class PlaceReaderDbHelper extends SQLiteOpenHelper {
                 AppHistogram.COLUMN_NAME_PACKNAME + ");");
 
         db.execSQL(SQL_CREATE_RULES);// need index on place and app?
-        //create new cities table, fill it with content from the csv file -- one time thing :)
-        // db.execSQL(SQL_CREATE_CITIES);
-        // db.execSQL( "Create Index CityTable_latitude_idx ON " + CityEntry.TABLE_NAME+"("+CityEntry.COLUMN_NAME_LAT+
-        //         "," + CityEntry.COLUMN_NAME_LON+");");
-
-        // db.execSQL(SQL_CREATE_RULES);
     }
 
     public void flushRules() {
@@ -130,58 +118,6 @@ public class PlaceReaderDbHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean fillCityDB() {
-        //read from US-cities-proc.csv
-        //insert data row by row
-        int numRows = (int) DatabaseUtils.queryNumEntries(getReadableDatabase(), CityEntry.TABLE_NAME);
-        if (numRows > 1) { //table has some elements
-            return true;
-        }
-        //otherwise fill table
-        try {
-            InputStream adFile = context.getAssets().open("US-cities-proc.csv");
-            BufferedReader br = new BufferedReader(new InputStreamReader((adFile)));
-            String line;
-            while ((line = br.readLine()) != null) {
-
-                String[] fields = line.split(COMMA_SEP);
-                String country = fields[1];
-                String state = fields[2];
-                String city = fields[3];
-                int zipcode = 0;
-                try {
-                    zipcode = Integer.parseInt(fields[4]);
-                } catch (Exception e) {
-                }
-
-                double lat = 0;
-                try {
-                    lat = Double.parseDouble(fields[5]);
-                } catch (Exception e) {
-                }
-
-                double lon = 0;
-                try {
-                    lon = Double.parseDouble(fields[6]);
-                } catch (Exception e) {
-                }
-
-                ContentValues values = new ContentValues();
-                values.put(CityEntry.COLUMN_NAME_COUNTRY, country);
-                values.put(CityEntry.COLUMN_NAME_STATE, state);
-                values.put(CityEntry.COLUMN_NAME_CITY, city);
-                values.put(CityEntry.COLUMN_NAME_ZIPCODE, zipcode);
-                values.put(CityEntry.COLUMN_NAME_LAT, lat);
-                values.put(CityEntry.COLUMN_NAME_LON, lon);
-
-                this.getWritableDatabase().insert(CityEntry.TABLE_NAME, null, values);
-            }
-        } catch (Exception e) {
-            System.err.println("Failed to read ad File");
-            return false;
-        }
-        return true;
-    }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is

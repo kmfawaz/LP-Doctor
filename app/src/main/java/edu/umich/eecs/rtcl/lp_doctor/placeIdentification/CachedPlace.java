@@ -87,16 +87,4 @@ public class CachedPlace {
         return timeDiff;
     }
 
-    //public static LatLng getCityLoc() {
-    //    return cityLoc;
-    //}
-
-    //public static String getCityName() {
-    //    return currentCity;
-    //}
-
-
-    // public int getTimeSpent() {
-    //     return timeInCurrentPlace;
-    // }
 }

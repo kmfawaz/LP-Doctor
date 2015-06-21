@@ -33,9 +33,8 @@ public class MobilityModel {
     //or every time the user visited new place
     private void fillMobilityModel() {
         placesPDF = new SparseArray<Double>();
-        //for (int i=0;i<100;i++) {
-        //    mobilityModel.put(i, i*1.253647616); // what is the reason for this ???? probably for testing
-        // }
+
+
         //where the total time is larger than 0, right ???????
         String strWhere = " where " + PlaceEntry.COLUMN_NAME_TOTAL_TIME + " >" + (60 * 1000); //interested in places with more than 1 minute
         String strSelect = "select " + PlaceEntry.COLUMN_NAME_PLACE_ID + ", " + PlaceEntry.COLUMN_NAME_TOTAL_TIME +

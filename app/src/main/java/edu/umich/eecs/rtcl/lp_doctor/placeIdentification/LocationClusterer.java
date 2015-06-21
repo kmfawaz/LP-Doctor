@@ -26,7 +26,7 @@ import edu.umich.eecs.rtcl.lp_doctor.placeIdentification.LocationContract.PlaceE
 public class LocationClusterer {
 
     //maps a location to anonymous visited place
-    //test on an existing trace
+
 
     final static private double RADIUS = 100;
     private static final int MIN_STAY = 7; //5 minutes minimum
@@ -41,49 +41,7 @@ public class LocationClusterer {
         //mDbHelper = new PlaceReaderDbHelper(context);
     }
 
-    //just to find if we can use the cached location; also timeSpent is crucial -- will be evident later hopefully
-    /*
-    public static int getPlace(LatLng loc, CachedPlace currentPlace) {
-        //if within the last known location (100m)
-        //report place
-        //o.w. go to DB to do lookup
-        try {
-            double cachedLat = currentPlace.getCurrentLoc().latitude;
-            double cachedLon = currentPlace.getCurrentLoc().longitude;
-            int placeCached = currentPlace.getPlaceID();
 
-            float results[] = {0.0f};
-            Location.distanceBetween(reportedLat, reportedLon, cachedLat, cachedLon, results);
-            if (results[0] <= 100) {
-                return placeCached;
-            }
-
-            return getPlaceFromDb(new LatLng(reportedLat, reportedLon)).placeID; //assuming it is in.
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
-    */
-
-    //not clear why is it needed, will come up later
-    /*
-    //return time in minutes, no entry, return 0
-    public boolean getTimeSpent(int place, PlaceReaderDbHelper mDbHelper) {
-        //if within the last known location (100m)
-        //report place
-        //o.w. go to DB to do lookup
-
-        int placeCached = CachedPlace.getPlace();
-        int timeSpent = CachedPlace.getTimeSpent() / 60;
-        if (placeCached == place && timeSpent > MIN_STAY) {
-            return true;
-        }
-
-
-        return getTimespentFromDb(place, mDbHelper) > MIN_STAY; //assuming it is in.
-    }
-*/
 
     //get location given a place ID
     public static LatLng getLoc(int place) {
