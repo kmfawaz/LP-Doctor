@@ -1,17 +1,27 @@
-/*
- * LP-Doctor Copyright 2015 Regents of the University of Michigan
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See LICENSE for the specific language governing permissions and limitations under the License
- */
-
-package edu.umich.eecs.rtcl.lp_doctor.anonymization;
-
 /* Lambert W function, code by various authors */
 /* Ported to Java by Daniel Wilson                      */
 
-//package dr.evomodel.epidemiology;
+/* PORTED FROM GNU SCIENTIFIC LIBRARY WHICH CARRIES THIS LICENSE:
+ *
+ * specfunc/lambert.c
+ *
+ * Copyright (C) 2007 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001 Gerard Jungman
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or (at
+ * your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ */
 
 /* Author:  G. Jungman */
 
@@ -20,6 +30,9 @@ package edu.umich.eecs.rtcl.lp_doctor.anonymization;
  * Some Lambert-ology from
  *  [Corless, Gonnet, Hare, and Jeffrey, "On Lambert's W Function".]
  */
+
+package edu.umich.eecs.rtcl.lp_doctor.anonymization;
+
 
 public class LambertW {
 
