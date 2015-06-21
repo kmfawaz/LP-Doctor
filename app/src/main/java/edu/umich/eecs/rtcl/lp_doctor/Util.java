@@ -25,7 +25,6 @@ public class Util {
     public static final String TAG = "LP-Doctor";
     public static final String SESSION_TAG = "session";
     public static final String DB_TAG = "database";
-    public static final String culpritApp = "edu.umich.eecs.rtcl.testlocation";
     public static final boolean DEBUG = false;
     public static final int LOCATION_POLLING_INTERVAL = 30 * 1000; //for testing purposes.
     public static final double ALPHA = 0.05;
@@ -108,26 +107,6 @@ public class Util {
         return locPerm;
 
 
-        /*
-        final List<PackageInfo> appInstalled = pm.getInstalledPackages(PackageManager.GET_PERMISSIONS);
-        for (PackageInfo packInfo:appInstalled) {
-            if (packInfo.packageName.equals(app)) {
-                //get the permissions and sift through them
-                //Util.Log("myLocation",packInfo.toString());
-                for (String perm: packInfo.requestedPermissions) {
-                    if (perm.toString().equals("android.permission.ACCESS_FINE_LOCATION")) {
-                        appHasFineLocPerms.put(app,true); //what if the app is updated? gotta catch those events as well
-                        return true;
-                    }
-                }
-                //return something here if found
-                //update cache
-            }
-        }
-        appHasFineLocPerms.put(app,false); //what if the app is updated? gotta catch those events as well
-        //true we need a an event handler for these cases --> easy to get as I suppose.
-        return false;
-        */
     }
 
     static public String getAppName(String packName, Context context) {
@@ -166,10 +145,7 @@ public class Util {
             boolean loc1 = pm.checkPermission("android.permission.ACCESS_FINE_LOCATION", app) == PackageManager.PERMISSION_GRANTED;
             boolean loc2 = true;//pm.checkPermission("android.permission.ACCESS_COARSE_LOCATION",app)==PackageManager.PERMISSION_GRANTED;
             if (loc1 || loc2) {
-                //security hole in the below
-                //if (!(procName.startsWith("com.android.") || procName.startsWith("com.google."))) {
-                ////System.out.println(procName);
-                //}
+
                 if (!isSystemPackage(appInfos.get(i), app)) {
                     //System.out.println(procName);
                     appList.add(app);

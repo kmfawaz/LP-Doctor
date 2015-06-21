@@ -17,7 +17,7 @@ import android.util.SparseArray;
 import edu.umich.eecs.rtcl.lp_doctor.placeIdentification.LocationContract.AppHistogram;
 
 public class HistogramManager {
-    //not a static class anymore!
+
     //behavior depends on actual or reported value on the histogram
     //this refers to the old way where we didn't know how to manage the sessions correctly
     //previously we assumed a list of places per session, we are being more restrictive now?

@@ -103,7 +103,7 @@ public class LocationAcquisitionHelper implements GoogleApiClient.ConnectionCall
         //41.854955,	-87.692871
         location.setLatitude(fakeLocation.latitude);//+rand.nextDouble()/100);
         location.setLongitude(fakeLocation.longitude);//+rand.nextDouble()/100);
-        //location.setAccuracy(500+rand.nextInt());
+
         location.setAccuracy(20); //need to study this further
 
 
@@ -113,10 +113,9 @@ public class LocationAcquisitionHelper implements GoogleApiClient.ConnectionCall
         try {
             LocationServices.FusedLocationApi.setMockMode(mGoogleApiClient, true);
             LocationServices.FusedLocationApi.setMockLocation(mGoogleApiClient, location);
-            //location.setProvider(LocationManager.GPS_PROVIDER);
-            //LocationServices.FusedLocationApi.setMockLocation(mGoogleApiClient, location);
+
             Location loc = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-            Util.Log("rule", loc.toString()); //problem is somewhere here! high frequency invocation
+            Util.Log("rule", loc.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -134,7 +133,7 @@ public class LocationAcquisitionHelper implements GoogleApiClient.ConnectionCall
     public void onConnected(Bundle bundle) {
         //do things related to location access.
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        //Log.v(Util.TAG,locClust.getDataFromDB()); -- will implement this later
+
     }
 
     @Override

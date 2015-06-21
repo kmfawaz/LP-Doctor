@@ -92,14 +92,7 @@ public class MonitoringService extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
-    /*
-    private void UpdateUI() {
-        Intent locationIntent = new Intent("edu.umich.eecs.rtcl.phonelab");
-        locationIntent.putExtra("action", "add");
-        locationIntent.putExtra("data", "iteration: "+i);
-        sendBroadcast(locationIntent);
-    }
-    */
+
 
     @Override
     public void onDestroy() {

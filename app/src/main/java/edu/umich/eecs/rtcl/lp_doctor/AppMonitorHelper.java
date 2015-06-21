@@ -33,8 +33,7 @@ public class AppMonitorHelper {
     private final int interval = 7500; // 10 Seconds  -- might have to reduce frequency
     Context context;
     MonitoringService mainService;
-    //static String place = "-"; //has to be updated
-    //we need another instance in location anonymizer --> move to the main Service
+
     //it is place reported to the app while running
     //must be hashset not just an integer
     HashMap<String, HashSet<Integer>> placesReportedToApp = new HashMap<String, HashSet<Integer>>();
@@ -45,10 +44,7 @@ public class AppMonitorHelper {
     private Runnable runnable = new Runnable() {
         public void run() {
             new myAsyncTask().execute();
-            //System.out.println("service working ...");
-            //i++;
-            //send intent to UI to update the text view
-            //UpdateUI();
+
             handler.postDelayed(runnable, interval);
         }
     };
@@ -106,7 +102,6 @@ public class AppMonitorHelper {
             Util.Log("RTCL", ":\t" + appOld + "\t" + appStarted);
             mainService.locAnonHelper.notifCtl.cancelNotification();
             mainService.stopLocationAnon();
-            //not very robust
         }
         handleSessionEnd(appOld, duration, actualPlaceStart, actualPlaceEnd);
 
@@ -199,7 +194,6 @@ public class AppMonitorHelper {
 
         if (accessedLocation && finePerm) {
             for (int placeActual : placesActualList) {
-                //how to get mDbHelper??????????
                 mainService.histHelper.updateHistogram(app, placeActual, HistogramManager.ACTUAL_FLAG);
             }
 
@@ -265,11 +259,6 @@ public class AppMonitorHelper {
 
             retVal = currentAppSession;
 
-			/*
-            Intent settings = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-    		settings.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    		startActivity(settings);
-    		*/
 
             currentAppSession = new appSessionRecord(appNew, System.currentTimeMillis(), 0, activity, place, txNewApp, rxNewApp);
         }
@@ -306,27 +295,12 @@ public class AppMonitorHelper {
             boolean lockedNew = isDeviceLocked(context);
             appSessionRecord retVal = isNewRecord(appOld, lockedOld, appNew, lockedNew);
 
-            /*
-            try {
-                LocationAccessDetector.dumpSysLocation(appNew, 10000);
-                Util.doesAppHasFinePerms(context,appNew); //have not has btw
-                for (int i=0;i<20;i++) {
-                    Util.Log("crash","crash\t"+i);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            */
+
             //new record is here!
             if (retVal != null) {
 
                 handleAppChange(appOld, appNew, retVal.end - retVal.start, retVal.placeStart, retVal.placeEnd);
-                //System.out.println(retVal.toString());
-                //Log.v("RTCLMon",retVal.toString());//dump to a file
-                //Log.v(Util.TAG, "place ID:\t"+mainService.getCurrentPlace());
-                //if (!appNew.equals(Util.culpritApp)) {
-                //    mainService.stopLocationAnon();
-                //}
+
             }
 
             appOld = appNew;
@@ -372,14 +346,7 @@ public class AppMonitorHelper {
         }
 
         public String toString() {
-            //parsing code for later
-            /*
-            Date current = new Date(start);
-			Calendar cal = new GregorianCalendar ();
-			cal.setTime(current);
-			cal.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
-			System.out.println(cal.getTime());
-			*/
+
             long txDiff = txEnd - txStart;
             long rxDiff = rxEnd - rxStart;
 
